@@ -1,86 +1,21 @@
-﻿<?php
-
-session_cache_limiter('nocache');
-
-header('Expires: ' . gmdate('r', 0));
-
-header('Content-type: application/json');
-
-$to = 'yosef.saleh515@gmail.com
-';
-
-$subject = $_POST['subject'];
-
-if(isset($_POST['email'])) {
-
-$name = $_POST['name'];
-
-$email = $_POST['email'];
-
-$fields = array(
-
-0 =>array(
-
-'text' => 'Name',
-
-'val' => $_POST['name']
-
-),
-
-1 =>array(
-
-'text' => 'Email address',
-
-'val' => $_POST['email']
-
-),
-
-2 =>array(
-
-'text' => 'Message',
-
-'val' => $_POST['message']
-
-)
-
-);
-
-$message = "";
-
-foreach($fields as $field) {
-
-$message .= $field['text'].": " . htmlspecialchars($field['val'], ENT_QUOTES) . "<br>\n";
-
-}
-
-$headers = '';
-
-$headers .= 'From: ' . $name . ' <' . $email . '>' . "\r\n";
-
-$headers .= "Reply-To: " .  $email . "\r\n";
-
-$headers .= "MIME-Version: 1.0\r\n";
-
-$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-
-if (mail($to, $subject, $message, $headers)){
-
-$arrResult = array ('response'=>'success');
-
-} else{
-
-$arrResult = array ('response'=>'error');
-
-}
-
-echojson_encode($arrResult);
-
-} else {
-
-$arrResult = array ('response'=>'error');
-
-echojson_encode($arrResult);
-
-}
-
+<?php
+//if "email" variable is filled out, send email
+  if (isset($_REQUEST['email']))  {
+  
+  //Email information
+  $admin_email = "yosef.saleh515@gmail.com";
+  $name = $_REQUEST['name'];
+  $email = $_REQUEST['email'];
+  $subject = $_REQUEST['subject'];
+  $comment = $_REQUEST['comment'];
+  
+  //send email
+  mail($admin_email, "$subject", $comment, "From:" . $email);
+  
+  //Email response
+  echo "Thank you for contacting us!";
+  }
+  
+  //if "email" variable is not filled out, display the form
+  else  {
 ?>
