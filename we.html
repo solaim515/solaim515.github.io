@@ -66,7 +66,7 @@
 
 
     
-    <form id="contactForm" action="form.php" method="POST" onsubmit="$('.hero-demo').blur();return false;" class="pure-form" style="text-align:center">
+    <form id="contactForm" method="POST" onsubmit="$('.hero-demo').blur();return false;" class="pure-form" style="text-align:center">
       <br/>
 		  <br/>
 		 <input type="text" value="" maxlength="100" class="form-control" placeholder="الإسم" name="name" id="name" aria-required="true" style="width:100%;max-width:600px;outline:0">
@@ -157,5 +157,28 @@
             ');
         }
     </script>
+	
+	<?php
+//if "email" variable is filled out, send email
+  if (isset($_REQUEST['email']))  {
+  
+  //Email information
+  $admin_email = "yosef.saleh515@gmail.com";
+  $name = $_REQUEST['name'];
+  $email = $_REQUEST['email'];
+  $subject = $_REQUEST['subject'];
+  $comment = $_REQUEST['comment'];
+  
+  //send email
+  mail($admin_email, "$subject", $comment, "From:" . $email);
+  
+  //Email response
+  echo "Thank you for contacting us!";
+  }
+  
+  //if "email" variable is not filled out, display the form
+  else  {
+?>
+	
 </body>
 </html>
