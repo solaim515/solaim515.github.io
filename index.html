@@ -47,18 +47,148 @@
         .button-lg { margin: 5px 0; padding: .65em 1.6em; font-size: 105%; }
 
         input[type="text"] { border-radius: 0 !important; }
+	    
+	    
+	   
+	    
+	    
+	   html, body {
+	font-family: "Trebuchet MS", Verdana, sans-serif;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+body {
+	min-height: 300px;
+}
+body * {
+	font-size: 14px;
+	color: #333;
+	line-height: 22px;
+}
+ 
+#wrapper {
+	width: 100%;
+	margin: -100px 0 0 0;
+	position: absolute;
+	left: 0;
+	top: 80%;
+}
+#wrapper h3 {
+	font-size: 20px;
+	text-align: center;
+}
+ 
+#wrapper > div {
+	background-color: #eee;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	width: 100%;
+	height: 20px;
+	padding: 10px 0;
+	overflow: hidden;
+}
+#wrapper > div.first {
+	border-bottom: none;
+}
+ 
+#wrapper main {
+	display: block;
+	margin: 0;
+}
+#wrapper article, #wrapper section {
+	display: block;
+	float: left;
+	margin: 0 10px;
+	padding: 0px 10px;
+}
+#wrapper article {
+	background-color: #696969;
+    color: #fff;
+}
+#wrapper section {
+	color: #333;
+	margin-right: 50px;
+}
+ 
+code {
+	font-style: italic;
+} 
+	    
+	    
     </style>
     <link rel="stylesheet" href="jquery.auto-complete.css">
 
 
 
-
-
+	
+	
+<script>
+$(function() {
+	var _scroll = {
+		delay: 500,
+		easing: 'linear',
+		items: 1,
+		duration: 0.04,
+		timeoutDuration: 0,
+		pauseOnHover: 'immediate'
+	};
+	$('#ticker-1').carouFredSel({
+		width: 1000,
+		align: false,
+		items: {
+			width: 'variable',
+			height: 35,
+			visible: 1
+		},
+		scroll: _scroll
+	});
+ 
+	$('#ticker-2').carouFredSel({
+		width: 1000,
+		align: false,
+		circular: true,
+		items: {
+			width: 'variable',
+			height: 35,
+			visible: 2
+		},
+		scroll: _scroll
+	});
+ 
+	//	set carousels to be 100% wide
+	$('.caroufredsel_wrapper').css('width', '100%');
+ 
+	//	set a large width on the last DD so the ticker won't show the first item at the end
+	$('#ticker-2 section:last').width(2000);
+});
+	</script>	
 
 
 </head>
 <body>
-  
+  <div id="wrapper">
+	
+	<div class="first">
+		<main id="ticker-1">
+		
+				<section>
+				وأما بني سليم هؤلاء فبطن متسع من أوسع بطون مضر وأكثرهم جموعاً، وهم بنو سليم بن منصور بن عكرمة بن خصفة بن قيس عيلان، وفيهم شعوب كثيرة	
+			</section>
+	
+			<article>ابن خلدون</article>
+				<section>وهم أكثر قبائل قيس عدداً، وفيهم الأبطال الأنجاد، والخيل الجياد</section>
+	
+			<article>الحمداني</article>
+				<section>
+					سليم بن منصور بن عكرمة بن خصفه بن قيس عيلان بن مضر، وسليم شعب لا قبيلة، لأنه خرج منه عدة قبائل وعمائر وبطون وأفخاذ
+			</section>
+			<article>أبو عبد الله الأسدي</article>
+				
+		</main>
+	</div>
+	
+</div>
     <form onsubmit="$('.hero-demo').blur();return false;" class="pure-form" style="border-top: 1px solid #eee;border-bottom:1px solid #eee;background:#fafafa;margin:0px 0;padding:20px 10px;text-align:center">
         <input autofocus type="text" id="name-input" class="hero-demo" name="q" placeholder="قم بالكتابة هنا" style="width:100%;max-width:600px;outline:0">
         <a style="margin:5px 0" class="pure-button button-lg" value="click" OnClick="readValue()">بحث</a>
