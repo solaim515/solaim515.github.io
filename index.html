@@ -1,246 +1,56 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
 <head>
-    <meta charset="utf-8">
-    <title>أنساب قبيلة سليم</title>
-    <meta name="google-site-verification" content="236fsczmSLpXEnoOiop6mRHMOslDJbWIu82tgdq2R9U" />
-    <meta name="description" content="A lightweight autocomplete plugin for jQuery.">
-    <link rel="shortcut icon" href="Untitled-5.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/yahoo/pure-release/v0.6.0/pure-min.css">
-	<link href="https://fonts.googleapis.com/css?family=Amiri&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="s.css">
-    <link href="https://fonts.googleapis.com/css?family=Aref+Ruqaa&display=swap" rel="stylesheet">
-	<style>
-
-
-
-
-
-		
-	
-
-	
-
-	
-
-
-
-
-
-        body { margin: 0; padding: 0; border: 0; min-width: 320px; color: #777; }
-        html, button, input, select, textarea, .pure-g [class *= "pure-u"] { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1.02em; }
-        pp, td { line-height: 1.5; }
-        ul { padding: 0 0 0 20px; }
-
-        th { background: #eee; white-space: nowrap; }
-        th, td { padding: 10px; text-align: left; vertical-align: top; font-size: .9em; font-weight: normal; border-right: 1px solid #fff; }
-        td:first-child { white-space: nowrap; color: #008000; width: 1%; font-style: italic; }
-
-        h1, h2, h3 { color: #4b4b4b; font-family: "Source Sans Pro", sans-serif; font-weight: 300; margin: 0 0 1.2em; }
-        h1 { font-size: 4.5em; color: black; margin: 0 0 .4em; font-family: 'Aref Ruqaa', serif; }
-        h2 { font-size: 2em; color: #636363; font-family: 'Aref Ruqaa', serif; }
-        h3 { font-size: 1.8em; color: #4b4b4b; margin: 1.8em 0 .8em }
-        h4 { font: bold 1em sans-serif; color: #636363; margin: 4em 0 1em; font-family: 'Aref Ruqaa', serif; }
-     
-        a:hover { text-decoration: underline; }
-        pp, pre { margin: 0 0 1.2em; }
-        ::selection { color: #fff; background: #328efd; }
-        ::-moz-selection { color: #fff; background: #328efd; }
-
-        @media (max-width:480px) {
-            h1 { font-size: 3em; }
-            h2 { font-size: 1.8em; }
-            h3 { font-size: 1.5em; }
-            td:first-child { white-space: normal; }
-        }
-
-        .inline-code { padding: 1px 5px; background: #eee; border-radius: 2px; }
-        pre { padding: 15px 10px; font-size: .9em; color: #555; background: #edf3f8; }
-        pre i { color: #aaa; } /* comments */
-        pre b { font-weight: normal; color: #cf4b25; } /* strings */
-        pre em { color: #0c59e9; } /* numeric */
-
-        /* Pure CSS */
-        .pure-button { margin: 5px 0; text-decoration: none !important; }
-        .button-lg { margin: 5px 0; padding: .65em 1.6em; font-size: 105%; }
-
-        input[type="text"] { border-radius: 0 !important; }
-	    
-	    
-	   
-	    
-
-
-
-
-
-		.full-screen {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background: white;
-}
-
-
-
-.full-screen{
-  color: white;
-}
-
-.hidden {
-    display: none;
-}
-
-
-
-
-
-
-
-
-	    
-
-    </style>
-    <link rel="stylesheet" href="jquery.auto-complete.css">
-
-
-
-	
-
-
-
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="initial-scale=1.0,width=device-width">
+  <title>jQuery Search.js Example</title>
+  <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+  <link href="src/search.min.css" rel="stylesheet">
+  
 </head>
 <body>
-
-    <form onsubmit="$('.hero-demo').blur();return false;" class="pure-form" style="border-top: 1px solid #eee;border-bottom:1px solid #eee;background:#fafafa;margin:0px 0;padding:20px 10px;text-align:center">
-        <input autofocus type="text" id="name-input" class="hero-demo" name="q" placeholder="اكتب اسم اي من القبائل والبطون والافخاذ" style="width:100%;font-size:30px;max-width:500px;height:45px;outline:0">
-        <a style="margin:5px 0" class="pure-button button-lg" value="click" OnClick="readValue();showPopup()" style="font-size: 30px">بحث</a>
-		
-    </form>
-	
-
-	
-<br/>
-	
-
-	
-	
-
-		<center>
-		 
-	<div class="full-screen hidden flex-container-center">
-	<form class="ui form">
-		
-	
-	<div class="ui container" style="margin:35px 0;">
-	<br/>
-	<a onclick="closePopup()" class="pure-button button-lg" style="border-top: 1px solid #eee;border-bottom:1px solid #eee;background:#fafafa;margin:0px 0;padding:20px 10px;text-align:cente">رجـــــــوع</a>
-
-	<div class="ui raised segment" id="textbox">
-		
-		<h2 id="output" style="text-align:right; font-family: 'Amiri', serif;"></h2>
-		  
-	</div>
-	</div>
-	
-	</form>
-	</div>
-	</center>
-	
-
-    <div id="fb-root"></div>
-    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="jquery.auto-complete.js"></script>
-    <script src="input.js"></script>
-    <script>
-        $(function(){
-            $('.hero-demo').autoComplete({
-                minChars: 1,
-                source: function(term, suggest){
-                    term = term.toLowerCase();
-                    var choices = ['بني سليم', 'سليم',];
-                    var suggestions = [];
-                    for (i=0;i<choices.length;i++)
-                        if (~choices[i].toLowerCase().indexOf(term)) suggestions.push(choices[i]);
-                    suggest(suggestions);
-                }
-            });
-            $('#advanced-demo').autoComplete({
-                minChars: 0,
-                source: function(term, suggest){
-                    term = term.toLowerCase();
-                  
-                    var suggestions = [];
-                    for (i=0;i<choices.length;i++)
-                        if (~(choices[i][0]+' '+choices[i][1]).toLowerCase().indexOf(term)) suggestions.push(choices[i]);
-                    suggest(suggestions);
-                },
-                renderItem: function (item, search){
-                    search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-                    var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
-                    return '<div class="autocomplete-suggestion" data-langname="'+item[0]+'" data-lang="'+item[1]+'" data-val="'+search+'"><img src="img/'+item[1]+'.png"> '+item[0].replace(re, "<b>$1</b>")+'</div>';
-                },
-                onSelect: function(e, term, item){
-                    console.log('Item "'+item.data('langname')+' ('+item.data('lang')+')" selected by '+(e.type == 'keydown' ? 'pressing enter or tab' : 'mouse click')+'.');
-                    $('#advanced-demo').val(item.data('langname')+' ('+item.data('lang')+')');
-                }
-            });
-        });
-
-        if (~window.location.href.indexOf('http')) {
-            (function() {var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/plusone.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();
-            (function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=114593902037957";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));
-            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-            $('#github_social').html('\
-                <iframe style="float:left;margin-right:15px" src="//ghbtns.com/github-btn.html?user=Pixabay&repo=jQuery-autoComplete&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>\
-                <iframe style="float:left;margin-right:15px" src="//ghbtns.com/github-btn.html?user=Pixabay&repo=jQuery-autoComplete&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>\
-            ');
-        }
-
-
-
-
-
-
-
-
-
-
-		const popup = document.querySelector('.full-screen');
-
-function showPopup(){
-  popup.classList.remove('hidden');
-}
-
-function closePopup(){
-  popup.classList.add('hidden');
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </script>
+<div id="jquery-script-menu">
+<div class="jquery-script-center">
+<ul>
+<li><a href="http://www.jqueryscript.net/form/jQuery-Plugin-For-Text-Live-Search-Search-js.html">Download This Plugin</a></li>
+<li><a href="http://www.jqueryscript.net/">Back To jQueryScript.Net</a></li>
+</ul>
+<div class="jquery-script-ads"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* jQuery_demo */
+google_ad_slot = "2780937993";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<div class="jquery-script-clear"></div>
+</div>
+</div>
+<div class="main" style="margin-top:150px;">
+  <h1>jQuery Search.js Example</h1>
+  <input placeholder="Search keywords" name="srch" class="search">
+  <p class="note">keywords: js, html, css, design, tools, library, blog, gallery</p>
+  <ul class="results"></ul>
+</div>
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="src/search.js"></script>
 </body>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
 </html>
