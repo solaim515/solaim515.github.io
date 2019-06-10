@@ -1,132 +1,104 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-@font-face {
-src: url(Sultan-Musnad-High.ttf);
-font-family: sul;
-}
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
 
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
+#window {
+  margin-top: 10px;
+  border: solid black 2px;
+  width: 350px;
+  height: 700px;
+  display: inline-block;
+  position: relative;
+  background-color: white;
+   position: relative;
 }
 
-/*--------------------------*/
-/*-------Text Styling-------*/
-/*--------------------------*/
+#description {
+  margin-top: 10px;
+  border: solid black 2px;
+  width: 700px;
+  height: 1300px;
+  display: inline-block;
+  text-align: right;
+  
+  background-color: white;
+  vertical-align: top;
+}
 
-body > * {
+img {
+  width:;
+  height:;
   
 }
 
-label, input {
-  font-size: 2.5em;
-}
-
-input {
-  font-size: 2em;
-  font-weight: 500;
-}
-
-p {
-  font-size: 2.5em;
-  font-weight: 500;
-}
-
-
-
-/*--------------------------*/
-/*----------Layout----------*/
-/*--------------------------*/
-
-body > * {
-  box-sizing: border-box;
-  
-}
-
-label, input, p {
-  display: block;
-  margin: 0 auto;
-  text-align: right;
-  font-family: 'Amiri', serif;
-} 
-
-input {
-  width: 100%;
-  padding: .5em 0;
-}
-::placeholder {
-font-family: 'Amiri', serif;
-}
-label, #translation {
-  padding: 1em;
-}
-
-div {
-  margin: 1em;
+h1 {
+  font-family: "Saira Semi Condensed", sans-serif;
+  font-size: 40px;
+  margin-top: 0;
+  font-color: blue;
 }
 
 p {
-  line-height: 1.5em;
-  font-family: 'Amiri', serif;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  margin: 20px;
 }
 
-
-
-/*--------------------------*/
-/*----------Colors----------*/
-/*--------------------------*/
-
-body {
+#buttons {
+  padding-left: 78%;
+  display: inline-block;
+  vertical-align: bottom;
+    margin-top: -155px;
 
 }
 
-label {
-  color: black;
+.direction {
+  width: 100px;
+  height: 100px;
 }
 
-input {
-  border: none;
-  background-color: #efefef;
-  text-align: right;
-  outline: none;
-  font-family: sul;
+i {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 6px;
 }
 
-#translated {
-  color: #262524;
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+#one {
+  display: inline-block;
+  border: black solid 3px;
+  text-align: center;
+  vertical-align: bottom;
+
+}
+
+#two {
+  display: inline-block;
+  border: black solid 3px;
+  text-align: center;
+    vertical-align: bottom;
+
+}
+
+#gifer {
+  margin-left: -30px;
+  margin-top: -120px;
+  vertical-align: bottom, right;
+}
+
+#gifer img {
+  height: auto;
+  width: 140px;
+}
+
+#window img{
+  height:auto;
+  width:auto;
+  max-width: 300px;
 }
