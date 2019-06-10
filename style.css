@@ -1,0 +1,132 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@font-face {
+src: url(Sultan-Musnad-High.ttf);
+font-family: sul;
+}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*--------------------------*/
+/*-------Text Styling-------*/
+/*--------------------------*/
+
+body > * {
+  
+}
+
+label, input {
+  font-size: 2.5em;
+}
+
+input {
+  font-size: 2em;
+  font-weight: 500;
+}
+
+p {
+  font-size: 2.5em;
+  font-weight: 500;
+}
+
+
+
+/*--------------------------*/
+/*----------Layout----------*/
+/*--------------------------*/
+
+body > * {
+  box-sizing: border-box;
+  
+}
+
+label, input, p {
+  display: block;
+  margin: 0 auto;
+  text-align: right;
+  font-family: 'Amiri', serif;
+} 
+
+input {
+  width: 100%;
+  padding: .5em 0;
+}
+::placeholder {
+font-family: 'Amiri', serif;
+}
+label, #translation {
+  padding: 1em;
+}
+
+div {
+  margin: 1em;
+}
+
+p {
+  line-height: 1.5em;
+  font-family: 'Amiri', serif;
+}
+
+
+
+/*--------------------------*/
+/*----------Colors----------*/
+/*--------------------------*/
+
+body {
+
+}
+
+label {
+  color: black;
+}
+
+input {
+  border: none;
+  background-color: #efefef;
+  text-align: right;
+  outline: none;
+  font-family: sul;
+}
+
+#translated {
+  color: #262524;
+}
