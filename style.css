@@ -1,132 +1,170 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-@font-face {
-src: url(Sultan-Musnad-High.ttf);
-font-family: sul;
-}
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
+* {
+	font-family: 'Droid Arabic Naskh'; 
 }
 
-/*--------------------------*/
-/*-------Text Styling-------*/
-/*--------------------------*/
+h1 {
+  text-align: center;
+}
 
-body > * {
+table.poem  {
+  direction: rtl;
+  margin: auto;
+  width: auto;
+}
+
+table.poem td {
+	padding-left: 3ex;
+	padding: 30px;
+	padding-right: 3ex;
+	text-align: justify;
+	text-align-last: justify;
+	-moz-text-align-last: justify;
+	-webkit-text-align-last: justify;
+	font-size: 40px;
+}
+
+h1 {
   
-}
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 2.8rem;
 
-label, input {
-  font-size: 2.5em;
-}
-
-input {
-  font-size: 2em;
-  font-weight: 500;
 }
 
 p {
-  font-size: 2.5em;
-  font-weight: 500;
+  text-align: left;
+  font-size: 1rem;
+  line-height: 2;
+  margin-top: 1rem;
 }
 
-
-
-/*--------------------------*/
-/*----------Layout----------*/
-/*--------------------------*/
-
-body > * {
-  box-sizing: border-box;
-  
+span {
+  border-bottom: 1px solid black;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+span:hover {
+  background: yellow;
 }
 
-label, input, p {
-  display: block;
-  margin: 0 auto;
-  text-align: right;
-  font-family: 'Amiri', serif;
-} 
-
-input {
-  width: 100%;
-  padding: .5em 0;
+.Tooltips {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
 }
-::placeholder {
-font-family: 'Amiri', serif;
+.Tooltips:hover p {
+  visibility: visible;
+  opacity: 1;
 }
-label, #translation {
-  padding: 1em;
+.Tooltips:hover p.OnTop {
+  -webkit-transform: translate(-50%, -100%);
+          transform: translate(-50%, -100%);
 }
-
-div {
-  margin: 1em;
+.Tooltips:hover p.OnBottom {
+  -webkit-transform: translate(-50%, 100%);
+          transform: translate(-50%, 100%);
 }
-
-p {
-  line-height: 1.5em;
-  font-family: 'Amiri', serif;
+.Tooltips:hover p.OnLeft {
+  -webkit-transform: translate(-100%, -50%);
+          transform: translate(-100%, -50%);
 }
-
-
-
-/*--------------------------*/
-/*----------Colors----------*/
-/*--------------------------*/
-
-body {
-
+.Tooltips:hover p.OnRight {
+  -webkit-transform: translate(100%, -50%);
+          transform: translate(100%, -50%);
 }
-
-label {
+.Tooltips p {
+  min-width: 30px;
+  opacity: 0;
+  display: inline-block;
+  visibility: hidden;
+  position: absolute;
+  text-align: left;
+  width: auto;
+  background: white;
   color: black;
+  font-size: 1rem;
+  line-height: 1.2;
+  padding: 10px;
+  border-radius: 3px;
+  white-space: normal;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-out;
+}
+.Tooltips p.OnTop {
+  top: -25px;
+  left: 50%;
+  -webkit-transform: translate(-50%, -150%);
+          transform: translate(-50%, -150%);
+}
+.Tooltips p.OnTop:before {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 8px solid black;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  bottom: -8px;
+  margin-left: -8px;
+  left: 50%;
 }
 
-input {
-  border: none;
-  background-color: #efefef;
-  text-align: right;
-  outline: none;
-  font-family: sul;
-}
 
-#translated {
-  color: #262524;
+.Tooltips p.OnBottom {
+  bottom: -15px;
+  left: 50%;
+  -webkit-transform: translate(-50%, 150%);
+          transform: translate(-50%, 150%);
+		  min-width: 320px;		
+}
+.Tooltips p.OnBottom:before {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border-bottom: 8px solid white;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  top: -8px;
+  margin-left: -8px;
+  left: 50%;
+}
+.Tooltips p.OnLeft {
+  left: -15px;
+  top: -15px;
+  -webkit-transform: translate(-150%, -50%);
+          transform: translate(-150%, -50%);
+}
+.Tooltips p.OnLeft:before {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 8px solid #67C8EA;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  top: 50%;
+  margin-top: -8px;
+  right: -8px;
+}
+.Tooltips p.OnRight {
+  right: -15px;
+  top: -15px;
+  -webkit-transform: translate(150%, -50%);
+          transform: translate(150%, -50%);
+}
+.Tooltips p.OnRight:before {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border-right: 8px solid #67C8EA;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  top: 50%;
+  margin-top: -8px;
+  left: -8px;
 }
