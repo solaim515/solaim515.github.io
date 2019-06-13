@@ -1,607 +1,142 @@
-<!DOCTYPE html>
-<!-- saved from url=(0062)https://osvaldas.info/examples/real-time-search-in-javascript/ -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	
-	<title>Real-Time Search in JavaScript demo by Osvaldas Valutis</title>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="description" content="Demo of Real-Time Search in JavaScript">
-	<meta name="robots" content="all">
-	<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
-	<link rel="canonical" href="https://osvaldas.info/examples/real-time-search-in-javascript">
-	<link rel="icon" href="https://osvaldas.info/examples/favicon.ico">
-	<link rel="stylesheet" href="./Real-Time Search in JavaScript demo by Osvaldas Valutis_files/main.css">
-	<link rel="stylesheet" href="./Real-Time Search in JavaScript demo by Osvaldas Valutis_files/css">
-	<style>
-	* {
-	font-family: 'Droid Arabic Naskh'; 
-}
+<!DOCTYPE html><html lang="ar">
+<head>
+    <meta charset="utf-8">
+    <title>قريبا</title>
+    <meta name="description" content="A lightweight autocomplete plugin for jQuery.">
+    <link rel="shortcut icon" href="Untitled-5.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/yahoo/pure-release/v0.6.0/pure-min.css">
+    <style>
+        body { margin: 0; padding: 0; border: 0; min-width: 320px; color: black; }
+        html, button, input, select, textarea, .pure-g [class *= "pure-u"] { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1.02em; }
+        p, td { line-height: 1.5; }
+        ul { padding: 0 0 0 20px; }
 
-h1 {
-  text-align: center;
-}
+        th { background: #eee; white-space: nowrap; }
+        th, td { padding: 10px; text-align: left; vertical-align: top; font-size: .9em; font-weight: normal; border-right: 1px solid #fff; }
+        td:first-child { white-space: nowrap; color: black; width: 1%; font-style: italic; }
 
-table.poem  {
-  direction: rtl;
-  margin: auto;
-  width: auto;
-}
+        h1, h2, h3 { color: black; font-color: black; font-family: "Source Sans Pro", sans-serif; font-weight: 300; margin: 0 0 1.2em; }
+        h1 { font-size: 4.5em; color: black; margin: 0 0 .4em; }
+        h2 { font-size: 2em; color: #636363; }
+        h3 { font-size: 1.8em; color: #4b4b4b; margin: 1.8em 0 .8em }
+        h4 { font: bold 1em sans-serif; color: #636363; margin: 4em 0 1em; }
+        a { color: #1f8dd6; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        p, pre { margin: 0 0 1.2em; }
+        ::selection { color: black; background: #328efd; }
+        ::-moz-selection { color: black; background: #328efd; }
 
-table.poem td {
-	padding-left: 3ex;
-	padding-right: 3ex;
-	text-align: justify;
-	text-align-last: justify;
-	-moz-text-align-last: justify;
-	-webkit-text-align-last: justify;
-}
+        @media (max-width:480px) {
+            h1 { font-size: 6.5em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.5em; }
+            td:first-child { white-space: normal; }
+        }
 
+        .inline-code { padding: 1px 5px; background: #eee; border-radius: 2px; }
+        pre { padding: 15px 10px; font-size: .9em; color: #555; background: #edf3f8; }
+        pre i { color: #aaa; } /* comments */
+        pre b { font-weight: normal; color: #cf4b25; } /* strings */
+        pre em { color: #0c59e9; } /* numeric */
 
+        /* Pure CSS */
+        .pure-button { margin: 5px 0; text-decoration: none !important; }
+        .button-lg { margin: 5px 0; padding: .65em 1.6em; font-size: 105%; }
 
-
-
-
-
-
-
-
-
-
-.element {
-    text-align: center;
-}
-
-.button {
-    display: inline-block;
-    background-color: rgb(157, 24, 24);
-    border-radius: 5px;
-    padding: 10px 15px;
-    text-transform: uppercase;
-    font-weight: bold;
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    transition: 1s;
-      letter-spacing: 0.1em;
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.tooltip {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black;
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  color: #000;
-  text-align: center;
-  padding: 25px 0;
-  position: absolute;
-  z-index: 1;
-  bottom: 155%;
-  left: 50%;
-  margin-left: -60px;
-  opacity: 0;
-  transition: opacity 0.3s;
-  background-color: #FFFFFF;
-  border: 1px solid #CCCCCC;
-  box-shadow: 2px 2px 5px 0 rgba(159, 159, 159, 0.5);
-  width: 130.06px;  
-  
-}
-
-.tooltip .tooltiptext::before {
-  content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -15px;
-    width: 30px;
-    height: 10px;
-    display: block;
-    background: #fff;
-    margin-top: -10px;
-    z-index: 3;
-}
-.tooltip .tooltiptext::after {
-  content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    box-shadow:  1px 0px 5px 0 rgba(159, 159, 159, 0.8), 1px -1px 0px 0 rgba(159, 159, 159, 0.2);
-    width: 10px;
-    height: 10px;
-    display: block;
-    background: #fff;
-    transform: rotate(135deg);
-    margin-top: -6px;
-    z-index: 2;
-  
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
-}
-
-
-
-
-
-
-
-
-		html
-		{
-		}
-			body
-			{
-				padding: 5rem 1.25rem; /* 80 20 */
-			}
-
-			.container
-			{
-				width: 100%;
-				max-width: 640px; /* 960 */
-				margin: 0 auto;
-			}
-
-			.container h1
-			{
-				font-size: 42px;
-				font-weight: 300;
-				color: #5594b3;
-				margin-bottom: 40px;
-			}
-				.container h1 a:hover,
-				.container h1 a:focus
-				{
-					color: #a664b7;
-				}
-
-			.container p
-			{
-				line-height: 1.6;
-			}
-
-			.faq
-			{
-			}
-			.faq input
-			{
-				width: 100%;
-				height: 60px;
-				font-size: 20px;
-				background-color: #fff;
-				box-shadow: 0px 2px 4px rgba( 52, 67, 75, .2 );
-				display: block;
-				padding: 0 20px;
-				margin-bottom: 40px;
-
-				
-			}
-			.faq input::-webkit-input-placeholder	{ color: black !important; }
-			.faq input::-moz-placeholder			{ color: black !important; }
-			.faq input:-ms-input-placeholder		{ color: black !important; }
-			.faq input:focus
-			{
-				box-shadow: 0px 4px 8px rgba( 52, 67, 75, .4 );
-			}
-			.faq .highlight
-			{
-				background-color: yellow;
-			}
-			.faq > ul
-			{
-			}
-				.faq > ul > li
-				{
-				}
-				.faq > ul > li:not( :first-child )
-				{
-					border-top: 1px solid #dcebed;
-					margin-top: 20px;
-					padding-top: 20px;
-				}
-				.faq > ul > li.is-hidden
-				{
-					display: none;
-				}
-					.faq > ul > li h2
-					{
-						font-size: 24px;
-						font-weight: 700;
-					}
-						.faq > ul > li h2:hover,
-						.faq > ul > li h2:focus,
-						.faq > ul > li.is-active h2,
-						.faq > ul > li:target h2
-						{
-							color: #a664b7;
-						}
-					.faq > ul > li > div
-					{
-						display: none;
-					}
-					.faq > ul > li.is-active > div,
-					.faq > ul > li:target > div
-					{
-						display: block;
-						margin-top: 10px;
-					}
-
-				.faq__notfound
-				{
-					font-size: 20px;
-					font-style: italic;
-					display: none;
-				}
-				.faq__notfound.is-visible
-				{
-					display: block;
-				}
-
-			.container footer
-			{
-				color: #a1bdcb;
-				margin-top: 40px;
-			}
-				.container footer a:hover,
-				.container footer a:focus
-				{
-					color: #5594b3;
-				}
-
-	</style>
-<script src="./Real-Time Search in JavaScript demo by Osvaldas Valutis_files/all.js.تنزيل" async="" crossorigin="anonymous"></script><script src="./Real-Time Search in JavaScript demo by Osvaldas Valutis_files/cb=gapi.loaded_1" async=""></script><script src="./Real-Time Search in JavaScript demo by Osvaldas Valutis_files/cb=gapi(1).loaded_0" async=""></script><script id="_carbonads_projs" type="text/javascript" src="./Real-Time Search in JavaScript demo by Osvaldas Valutis_files/CKYI5K77.json"></script><script charset="utf-8" src="./Real-Time Search in JavaScript demo by Osvaldas Valutis_files/button.509719336ca39171c37a321231ccaf83.js.تنزيل"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
-.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100%;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100%;position:absolute;right:0;top:0;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#1d3c78;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
-.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}</style></head>
-
+        input[type="text"] { border-radius: 0 !important; }
+    </style>
+    <link rel="stylesheet" href="jquery.auto-complete.css">
+</head>
 <body>
 
-
-
-<div class="container" role="main">
-
-	<h1><a href="http://osvaldas.info/real-time-search-in-javascript"></a></h1>
-
-	<div class="faq">
-		<input type="search" value="" placeholder="اكتب اسم الشاعر او بيت قصيدة او جزء منها">
-		<ul>
-		
-
-		<li id="faq-7" class="">
-				<h2><a href="https://osvaldas.info/examples/real-time-search-in-javascript/#faq-7">قصيدة ل عباس بن مرداس السلمي</a></h2>
-				
-			
-		
-		
-	<div>
-				
-<table class="poem">
-<tr>
-	<td>يا خاتم النباء إنك مرسل </td>
-	<td>بالحق كل هدى السبيل هداكا</td>
-</tr>
-
-
-</table>
+<div style="max-width:900px;padding:0 10px;margin:40px auto;text-align:center">
 <br/>
-<center>
-<div class="wrapper">
-        <div class="element">
-                <a class="button" href="h.html" target="_blank">عرض</a>
+<br/>
+<h1 style="font-color: black;">قـــريــبــاً</h1>
+        
+       
+</div>
+ 
+
+ <br/>
+ <br/>
+  <br/>
+ <br/>
+ <br/>
+ <br/>
+  <br/>
+ <br/>
+ <br/>
+ <br/>
+  <br/>
+ <br/>
+ <br/>
+ <br/>
+  <br/>
+ <br/>
+ <br/>
+ <br/>
+  <br/>
+ <br/>
+ <br/>
+
+    <div style="background:#fafafa;border-top:1px solid #eee;padding:15px;font-size:.9em">
+        <div style="max-width:900px;margin:auto;padding:0 10px">
+            <a style="float:right;margin-left:20px" href="https://www.instagram.com/w5eve/">instagram</a>
+            
+            يوسف السلمي
         </div>
     </div>
 
-</center>
-
-				</div>
-</li>
-
-			<li id="faq-8" class="">
-				<h2><a href="https://osvaldas.info/examples/real-time-search-in-javascript/#faq-8">قصيدة ل خفاف بن ندبة السلمي</a></h2>
-				<div>
-			
-<table style="font-size: 20px;" class="poem">
-<tr>
-	<td>لم تاخذون سلاحه لقتاله</td>
-	<td>ولذاكم عند الاله اثام</td>
-</tr>
-<tr>
-	<td>لا دينكم ديني ولا انا كافر</td>
-	<td>حتى يزول الى الطراة شمام</td>
-
-</table>
-<br/>
-
-<center>
-<div class="wrapper">
-        <div class="element">
-                <a class="button" href="x.html" target="_blank">عرض</a>
-        </div>
-    </div>
-
-</center>
-				</div>
-			</li>
-		</ul>
-		
-
-		<div class="faq__notfound"><p>لا توجد نتائج</p></div>
-	</div>
-	<!--
-	<footer><p>برمجة : يوسف السلمي</p></footer>
-	-->
-	
-<!--
-
-	JQUERY DEPENDENCY
--->
-
-<script type="text/javascript" async="" src="./Real-Time Search in JavaScript demo by Osvaldas Valutis_files/ga.js.تنزيل"></script><script src="./Real-Time Search in JavaScript demo by Osvaldas Valutis_files/jquery-v1.min.js.تنزيل"></script>
-<script>
-
-	'use strict';
-
-
-	// search & highlight
-
-	;( function( $, window, document, undefined )
-	{
-		var $container = $( '.faq' );
-		if( !$container.length ) return true;
-
-		var $input			= $container.find( 'input' ),
-			$notfound		= $container.find( '.faq__notfound' ),
-			$items			= $container.find( '> ul > li' ),
-			$item			= $(),
-			itemsIndexed	= [];
-
-		$items.each( function()
-		{
-			itemsIndexed.push( $( this ).text().replace( /\s{2,}/g, ' ' ).toLowerCase() );
-		});
-
-		$input.on( 'keyup', function( e )
-		{
-			if( e.keyCode == 13 ) // enter
-			{
-				$input.trigger( 'blur' );
-				return true;
-			}
-
-			$items.each( function()
-			{
-				$item = $( this );
-				$item.html( $item.html().replace( /<span class="highlight">([^<]+)<\/span>/gi, '$1' ) );
-			});
-
-			var searchVal = $.trim( $input.val() ).toLowerCase();
-			if( searchVal.length )
-			{
-				for( var i in itemsIndexed )
-				{
-					$item = $items.eq( i );
-					if( itemsIndexed[ i ].indexOf( searchVal ) != -1 )
-						$item.removeClass( 'is-hidden' ).html( $item.html().replace( new RegExp( searchVal+'(?!([^<]+)?>)', 'gi' ), '<span class="highlight">$&</span>' ) );
-					else
-						$item.addClass( 'is-hidden' );
-				}
-			}
-			else $items.removeClass( 'is-hidden' );
-
-			$notfound.toggleClass( 'is-visible', $items.not( '.is-hidden' ).length == 0 );
-		});
-	})( jQuery, window, document );
-
-
-	// toggling items on title press
-
-	;( function( $, window, document, undefined )
-	{
-		$( document ).on( 'click', '.faq h2 a', function( e )
-		{
-			e.preventDefault();
-			$( this ).parents( 'li' ).toggleClass( 'is-active' );
-		});
-	})( jQuery, window, document );
-
-
-	// auto-show item content when show results reduces to single
-
-	;( function( $, window, document, undefined )
-	{
-		var $container = $( '.faq' );
-		if( !$container.length ) return true;
-
-		var $input		= $container.find( 'input' ),
-			$items		= $container.find( '> ul > li' ),
-			$item		= $();
-
-		$input.on( 'keyup', function()
-		{
-			$item = $items.not( '.is-hidden' );
-			if( $item.length == 1 )
-				$item.addClass( 'js--autoshown is-active' );
-			else
-				$items.filter( '.js--autoshown' ).removeClass( 'js--autoshown is-active' );
-		});
-	})( jQuery, window, document );
-
-</script>
-
-
-<!--
-
-	NO DEPENDENCIES (IE9+ support)
-
-<script>
-
-	'use strict';
-
-	;( function ( document, window, index )
-	{
-		var hasElementClass		= function( element, className ){ return element.classList ? element.classList.contains( className ) : new RegExp( '(^| )' + className + '( |$)', 'gi' ).test( element.className ); },
-			addElementClass		= function( element, className ){ element.classList ? element.classList.add( className ) : element.className += ' ' + className; },
-			removeElementClass	= function( element, className ){ element.classList ? element.classList.remove( className ) : element.className = element.className.replace( new RegExp( '(^|\\b)' + className.split( ' ' ).join( '|' ) + '(\\b|$)', 'gi' ), ' ' ); };
-
-
-		// search & highlight
-
-		;( function ( document, window, index )
-		{
-			var container = document.querySelector( '.faq' );
-			if( !container ) return true;
-
-			var input			= container.querySelector( 'input' ),
-				notfound		= container.querySelector( '.faq__notfound' ),
-				items			= document.querySelectorAll( '.faq > ul > li' ),
-				item			= {},
-				itemsIndexed	= [];
-
-			[].forEach.call( items, function( entry )
-			{
-				itemsIndexed.push( entry.textContent.replace( /\s{2,}/g, ' ' ).toLowerCase() );
-			});
-
-			input.addEventListener( 'keyup', function( e )
-			{
-				if( e.keyCode == 13 ) // enter
-				{
-					input.blur();
-					return true;
-				}
-
-				[].forEach.call( items, function( entry )
-				{
-					entry.innerHTML = entry.innerHTML.replace( /<span class="highlight">([^<]+)<\/span>/gi, '$1' );
-				});
-
-				var searchVal = input.value.trim().toLowerCase();
-				if( searchVal.length )
-				{
-					itemsIndexed.forEach( function( entry, i )
-					{
-						if( itemsIndexed[ i ].indexOf( searchVal ) != -1 )
-						{
-							removeElementClass( items[ i ], 'is-hidden' );
-							items[ i ].innerHTML = items[ i ].innerHTML.replace( new RegExp( searchVal+'(?!([^<]+)?>)', 'gi' ), '<span class="highlight">$&</span>' );
-						}
-						else
-							addElementClass( items[ i ], 'is-hidden' );
-					});
-				}
-				else [].forEach.call( items, function( entry ){ removeElementClass( entry, 'is-hidden' ); });
-
-				if( items.length == [].filter.call( items, function( entry ){ return hasElementClass( entry, 'is-hidden' ) } ).length )
-					addElementClass( notfound, 'is-visible' );
-				else
-					removeElementClass( notfound, 'is-visible' );
-					
-			});
-		}( document, window, 0 ));
-
-
-		// toggling items on title press
-
-		;( function ( document, window, index )
-		{
-			[].forEach.call( document.querySelectorAll( '.faq h2 a' ), function( entry )
-			{
-				addElementClass( entry, 'js--is-toggleable-item' );
-			});
-
-			document.addEventListener( 'click', function( e )
-			{
-				if( hasElementClass( e.target, 'js--is-toggleable-item' ) )
-				{
-					e.preventDefault();
-					var current = e.target;
-					while( current.parentNode )
-					{
-						current = current.parentNode;
-						if( current.tagName.toLowerCase() == 'li' )
-						{
-							hasElementClass( current, 'is-active' ) ? removeElementClass( current, 'is-active' ) : addElementClass( current, 'is-active' );
-							break;
-						}
-					}
-				}
-			});
-		}( document, window, 0 ));
-
-
-		// auto-show item content when show results reduces to single
-
-		;( function ( document, window, index )
-		{
-			var container = document.querySelector( '.faq' );
-			if( !container ) return true;
-
-			var input	= container.querySelector( 'input' ),
-				items	= document.querySelectorAll( '.faq > ul > li' ),
-				item	= {};
-
-			input.addEventListener( 'keyup', function( e )
-			{
-				item = [].filter.call( items, function( entry ){ return !hasElementClass( entry, 'is-hidden' ); } )
-
-				if( item.length == 1 )
-				{
-					addElementClass( item[ 0 ], 'js--autoshown' );
-					addElementClass( item[ 0 ], 'is-active' );
-				}
-				else
-					[].forEach.call( items, function( entry )
-					{
-						if( hasElementClass( entry, 'js--autoshown' ) )
-						{
-							removeElementClass( entry, 'js--autoshown' );
-							removeElementClass( entry, 'is-active' );
-						}
-					});
-			});
-		}( document, window, 0 ));
-
-	}( document, window, 0 ));
-
-</script>
-
--->
-
-
-
-<!--
-	STUFF
--->
-
-
-
-
-
-<script src="./Real-Time Search in JavaScript demo by Osvaldas Valutis_files/main.js.تنزيل"></script><div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Real-Time Search in JavaScript demo by Osvaldas Valutis_files/xd_arbiter.html" style="border: none;"></iframe></div><div></div></div></div><script src="./Real-Time Search in JavaScript demo by Osvaldas Valutis_files/all.js(1).تنزيل" id="facebook-jssdk" async=""></script><script src="./Real-Time Search in JavaScript demo by Osvaldas Valutis_files/plusone.js.تنزيل" async="" gapi_processed="true"></script><script src="./Real-Time Search in JavaScript demo by Osvaldas Valutis_files/widgets.js.تنزيل" id="twitter-wjs" charset="utf-8" async=""></script>
-<script>var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-7572727-1']); _gaq.push(['_trackPageview']); (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })();</script>
-
-
-
-
-
-
-<iframe scrolling="no" frameborder="0" allowtransparency="true" src="./Real-Time Search in JavaScript demo by Osvaldas Valutis_files/widget_iframe.d753e00c3e838c1b2558149bd3f6ecb8.html" title="Twitter settings iframe" style="display: none;"></iframe><iframe name="oauth2relay870252344" id="oauth2relay870252344" src="./Real-Time Search in JavaScript demo by Osvaldas Valutis_files/postmessageRelay.html" tabindex="-1" aria-hidden="true" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe><iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;" title="Twitter analytics iframe" src="./Real-Time Search in JavaScript demo by Osvaldas Valutis_files/saved_resource.html"></iframe></body></html>
+    <div id="fb-root"></div>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="jquery.auto-complete.js"></script>
+    <script>
+        $(function(){
+            $('#hero-demo').autoComplete({
+                minChars: 1,
+                source: function(term, suggest){
+                    term = term.toLowerCase();
+                    var choices = ['ActionScript', 'AppleScript', 'Asp', 'Assembly', 'BASIC', 'Batch', 'C', 'C++', 'CSS', 'Clojure', 'COBOL', 'ColdFusion', 'Erlang', 'Fortran', 'Groovy', 'Haskell', 'HTML', 'Java', 'JavaScript', 'Lisp', 'Perl', 'PHP', 'PowerShell', 'Python', 'Ruby', 'Scala', 'Scheme', 'SQL', 'TeX', 'XML'];
+                    var suggestions = [];
+                    for (i=0;i<choices.length;i++)
+                        if (~choices[i].toLowerCase().indexOf(term)) suggestions.push(choices[i]);
+                    suggest(suggestions);
+                }
+            });
+            $('#advanced-demo').autoComplete({
+                minChars: 0,
+                source: function(term, suggest){
+                    term = term.toLowerCase();
+                    var choices = [['Australia', 'au'], ['Austria', 'at'], ['Brasil', 'br'], ['Bulgaria', 'bg'], ['Canada', 'ca'], ['China', 'cn'], ['Czech Republic', 'cz'], ['Denmark', 'dk'], ['Finland', 'fi'], ['France', 'fr'], ['Germany', 'de'], ['Hungary', 'hu'], ['India', 'in'], ['Italy', 'it'], ['Japan', 'ja'], ['Netherlands', 'nl'], ['Norway', 'no'], ['Portugal', 'pt'], ['Romania', 'ro'], ['Russia', 'ru'], ['Spain', 'es'], ['Swiss', 'ch'], ['Turkey', 'tr'], ['USA', 'us']];
+                    var suggestions = [];
+                    for (i=0;i<choices.length;i++)
+                        if (~(choices[i][0]+' '+choices[i][1]).toLowerCase().indexOf(term)) suggestions.push(choices[i]);
+                    suggest(suggestions);
+                },
+                renderItem: function (item, search){
+                    search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+                    var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
+                    return '<div class="autocomplete-suggestion" data-langname="'+item[0]+'" data-lang="'+item[1]+'" data-val="'+search+'"><img src="img/'+item[1]+'.png"> '+item[0].replace(re, "<b>$1</b>")+'</div>';
+                },
+                onSelect: function(e, term, item){
+                    console.log('Item "'+item.data('langname')+' ('+item.data('lang')+')" selected by '+(e.type == 'keydown' ? 'pressing enter or tab' : 'mouse click')+'.');
+                    $('#advanced-demo').val(item.data('langname')+' ('+item.data('lang')+')');
+                }
+            });
+        });
+
+        if (~window.location.href.indexOf('http')) {
+            (function() {var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/plusone.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();
+            (function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=114593902037957";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+            $('#github_social').html('\
+                <iframe style="float:left;margin-right:15px" src="//ghbtns.com/github-btn.html?user=Pixabay&repo=jQuery-autoComplete&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>\
+                <iframe style="float:left;margin-right:15px" src="//ghbtns.com/github-btn.html?user=Pixabay&repo=jQuery-autoComplete&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>\
+            ');
+        }
+    </script>
+</body>
+</html>
