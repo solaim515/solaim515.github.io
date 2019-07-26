@@ -1,0 +1,107 @@
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*--------------------------*/
+/*-------Text Styling-------*/
+/*--------------------------*/
+
+body > * {
+  font-family: 'Raleway', sans-serif;
+}
+
+label, input {
+  font-size: 2.5em;
+}
+
+
+input {
+  font-size: 2em;
+  font-weight: 500;
+}
+p {
+  font-size: 2.5em;
+  font-style: italic;
+  font-weight: 500;
+}
+
+
+
+/*--------------------------*/
+/*----------Layout----------*/
+/*--------------------------*/
+
+body > * {
+  box-sizing: border-box;
+  
+}
+
+label, input, p {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+} 
+
+input {
+  width: 500px;
+ 
+  text-align: right;
+  height: 400px;
+}
+
+label, #translation {
+  padding: 1em;
+}
+
+div {
+  margin: 1em;
+}
+
+p {
+  line-height: 1.5em;
+}
+
+
+
+/*--------------------------*/
+/*----------Colors----------*/
+/*--------------------------*/
+
+body {
+  background-color: #e2a15a;
+}
+
+label {
+  color: #f7f1ea;
+}
+
+input {
+  border: none;
+  background-color: #eae5e1;
+  outline: none;
+}
+
+#translated {
+  color: #262524;
+}

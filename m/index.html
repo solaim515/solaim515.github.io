@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>مترجمa</title>
+  
+  
+  <style>
+  textarea {
+    width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  resize: none;
+  text-align: right;
+  color: black;
+  font-size: 30px;
+  }
+  span {
+background: yellow;
+color: black;
+  }
+  body {
+    text-align: right;
+  }
+  .box {
+    font-size: 30px;
+    color: black;
+    background: #f8f8f8;
+    display: inline-block;
+   
+    width: 100%;
+  height: 150px auto;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+
+  text-align: right;
+  }
+  .box2 {
+    font-size: 30px;
+    color: black;
+    background: #f8f8f8;
+    display: inline-block;
+   
+    width: 100%;
+  height: 150px auto;
+
+  box-sizing: border-box;
+
+  border-radius: 4px;
+
+  text-align: right;
+  }
+  .te {
+    
+    color: black;
+
+    display: inline-block;
+    border: 2px solid #ccc;
+    width: 100%;
+  height: 150px auto;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  
+  text-align: right;
+  }
+  .te2 {
+    
+    color: black;
+
+    display: inline-block;
+
+    width: 100%;
+  height: 150px auto;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  
+  text-align: right;
+  }
+  /** 
+   
+  string = string.replace(/(you all|you guys|everyone)/gi,'Y\'all');
+  string = string.replace(/(y'all would have|y'all just)/gi,'Y\'alld\'ve');
+  string = string.replace(/do it/gi,'Get Ir Dun');
+  string = string.replace(/(you bet|you're right|you're correct|you are right|you are correct)/gi,'You\'re darn tootin\'');
+  string = string.replace(/(going to go to|about to|planning to)/gi,'Fixin\' To');
+  string = string.replace(/(good morning|morning)/gi,'Mornin\'');
+  string = string.replace(/(good afternoon)/gi,'Afternoon');
+  string = string.replace(/(you idiot|you're an idiot|you dummy|you stupid)/gi,'Bless your heart!');
+  string = string.replace(/(it's cold|it's chilly)/gi,'It\'s Colder Than a Witch\'s Tit');
+  string = string.replace(/('have a desire to'|'have a craving for')/gi,'A Hankerin\' For');
+    string = string.replace(/('want to'|wanna|i'd like|you'd like|would like)/gi,'Have A Hankerin\' to');
+  string = string.replace(/grocery store/gi,'Publix');
+
+  **/
+  .button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+  </style>
+   
+
+  
+</head>
+
+<body>
+
+  <html>
+  <head>
+ 
+  </head>
+  <body>
+
+<label for='original'>الترجمة</label>
+<textarea id='original' placeholder='اكتب هنا .....'></textarea>
+<button class="button" onclick="myFunction()">تفاصيل</button>
+  <div id="translation">
+    <center>
+
+      <textarea class="box" id="translated" readonly >ترجمة</textarea>
+    </center>
+  </div>
+  <div id="demo"></div>
+
+  </body>
+</html>
+  
+  
+
+    <script  src="./script.js"></script>
+
+
+    <script>
+        function myFunction() {
+          var text = "لا توجد نتائج";
+          var text2 = "";
+          var text3 = "";
+          var tr = document.getElementById("original").value;
+        
+          switch(tr) {
+            case "ضاري":
+              text = "ضاري";
+              text2 = "اداة زمن تدل على الماضي"
+              text3 = "قديم"
+            break;
+            case "مضارع":
+            text = "I am not a fan of orange.";
+            break;
+            case "":
+            text = "لم تقم بكتابة شيئ";
+            break;
+          
+          }
+          document.getElementById("demo").innerHTML ='<br/>' + '<div class="te">' + '<h3>' + text + '</h3>' + '<h4>' + text2 + '</h4>' + '<h4>' + text3 + '</h4>' + '</div>';
+        }
+        
+        </script>
+ 
+
+</body>
+
+</html>
