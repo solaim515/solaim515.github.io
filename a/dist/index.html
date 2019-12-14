@@ -1,0 +1,406 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>محرك  بحث حيوانات</title>
+    <meta name="google-site-verification" content="236fsczmSLpXEnoOiop6mRHMOslDJbWIu82tgdq2R9U" />
+    <meta name="description" content="A lightweight autocomplete plugin for jQuery.">
+    <link rel="shortcut icon" href="Untitled-5.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdn.rawgit.com/yahoo/pure-release/v0.6.0/pure-min.css">
+
+	<link rel="stylesheet" href="s.css">
+
+<link href="https://fonts.googleapis.com/css?family=Aref+Ruqaa&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300">
+
+    <link rel="stylesheet" href="jquery.auto-complete.css">
+
+	<style>
+
+
+/**
+	<link href="https://fonts.googleapis.com/css?family=Amiri&display=swap" rel="stylesheet">
+	 nat: '#802',
+    index: 802,
+    cat: 'Gloomdweller',
+    jp: 'マーシャドー',
+    romaji: 'Maashadoo',
+    typing: ['Fighting', 'Ghost']
+     **/
+		
+	
+
+	
+
+	
+
+
+
+
+
+        body { margin: 0; padding: 0; border: 0; min-width: 320px; color: #777; }
+        html, button, input, select, textarea, .pure-g [class *= "pure-u"] { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1.02em; }
+        pp, td { line-height: 1.5; }
+        ul { padding: 0 0 0 20px; }
+
+        th { background: #eee; white-space: nowrap; }
+        th, td { padding: 10px; text-align: left; vertical-align: top; font-size: .9em; font-weight: normal; border-right: 1px solid #fff; }
+        td:first-child { white-space: nowrap; color: #008000; width: 1%; font-style: italic; }
+
+        h11, h2, h33 { color: #4b4b4b; font-family: "Source Sans Pro", sans-serif; font-weight: 300; margin: 0 0 1.2em; }
+        h11 { font-size: 4.5em; color: black; margin: 0 0 .4em; font-family: 'Aref Ruqaa', serif; }
+        h22 { font-size: 2em; color: #636363; font-family: 'Aref Ruqaa', serif; }
+        h33{ font-size: 1.8em; color: #4b4b4b; margin: 1.8em 0 .8em }
+        h4 { font: bold 1em sans-serif; color: #636363; margin: 4em 0 1em; font-family: 'Aref Ruqaa', serif; }
+     
+        a:hover { text-decoration: underline; }
+        pp, pre { margin: 0 0 1.2em; }
+        ::selection { color: #fff; background: #328efd; }
+        ::-moz-selection { color: #fff; background: #328efd; }
+
+        @media (max-width:480px) {
+            h11 { font-size: 3em; }
+            h22 { font-size: 1.8em; }
+            h33 { font-size: 1.5em; }
+            td:first-child { white-space: normal; }
+        }
+
+        .inline-code { padding: 1px 5px; background: #eee; border-radius: 2px; }
+        pre { padding: 15px 10px; font-size: .9em; color: #555; background: #edf3f8; }
+        pre i { color: #aaa; } /* comments */
+        pre b { font-weight: normal; color: #cf4b25; } /* strings */
+        pre em { color: #0c59e9; } /* numeric */
+
+        /* Pure CSS */
+        .pure-button { margin: 5px 0; text-decoration: none !important; }
+        .button-lg { margin: 5px 0; padding: .65em 1.6em; font-size: 105%; }
+
+        input[type="text"] { border-radius: 0 !important; }
+	    .aa {
+            line-height: 2rem;
+        }
+	    h3 {
+            color: green;
+            font-size: 50px;
+            text-align:right;
+            font-family: 'Amiri', serif;
+            line-height: 3.2rem;
+        }
+	   
+	    h2 {
+            text-align:right;
+            font-family: 'Amiri', serif;  
+            font-size: 40px;
+            line-height: 3.2rem;
+        }
+        h4 {
+            font-family: 'Amiri', serif;  
+            font-size: 5px;
+            color: #777;
+            line-height: 3.2rem;
+        }
+        h1 {
+            color: black;
+            font-size: 50px;
+            font-family: 'Amiri', serif;
+            line-height: 3.2rem;
+        }
+        p {
+            color: black;
+            font-size: 25px;
+            text-align:right;
+            font-family: 'Amiri', serif; 
+            line-height: 3.2rem;
+        }
+        h6 {
+            color: black;
+            font-size: 30px;
+            text-align:center;
+            font-family: 'Amiri', serif;
+            line-height: 3.2rem;
+        }
+        h5 {
+            color: black;
+            font-size: 30px;
+            text-align:right;
+            font-family: 'Amiri', serif;
+            line-height: 3.5rem;
+        }
+.jjj {
+  color: black;
+            font-size: 30px;
+            text-align: right;
+            font-family: 'Amiri', serif;
+            line-height: 3.2rem;
+            	margin: 25px;
+}
+		.full-screen {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: white;
+}
+
+
+
+.full-screen{
+  color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+.p {
+ 
+  background: #f7f9fb;
+  width: auto;
+  height: auto;
+  margin: -8px;
+  word-spacing: 5px;
+  text-align: center;
+}
+
+.ff {
+ 
+  background: #f7f9fb;
+  width: auto;
+  height: auto;
+
+  word-spacing: 5px;
+  text-align: center;
+}
+.fff {
+ 
+  background: #f7f9fb;
+  color: red;
+  width: auto;
+  height: auto;
+
+  word-spacing: 5px;
+  text-align: center;
+}
+.bc {
+    font-size: 60px;
+}
+
+
+
+
+.z {
+
+
+  
+ 
+  text-align: center;
+}
+
+
+
+
+
+
+.vv {
+	margin: 25px;
+}
+.vvv {
+	margin: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+	    
+
+    </style>
+
+	
+
+
+
+</head>
+<body>
+
+    <form onsubmit="$('.hero-demo').blur();return false;" class="pure-form" style="border-top: 1px solid #eee; border-bottom:1px solid #eee; background:#fafafa; margin:0px 0;padding:20px 10px; text-align:center;">
+        <input autofocus type="text" id="name-input" class="hero-demo" name="بحث" placeholder="اكتب اسم اي من القبائل والبطون والافخاذ" style="width:100%; font-size:30px; max-width:500px; height:45px; outline:0;">
+        <a style="margin:5px 0" type="reset" class="pure-button button-lg" value="click" OnClick="readValue();showPopup()" style="font-size: 30px">بحث</a>
+		
+    </form>
+	<br><br><br>
+ <!-- <div id="results" class="flow-text col s12"></div> -->
+	
+<br/>
+	
+
+	
+	
+
+		<center>
+		 
+                <div class="full-screen hidden flex-container-center">
+	<form class="ui form">
+		
+	
+	<div class="ui container" style="margin:35px 0;">
+    <br/>
+    <div id="sound"></div>
+	<a onclick="closePopup()" class="pure-button button-lg" style="border-top: 1px solid #eee;border-bottom:1px solid #eee;background:#fafafa;margin:0px 0;padding:20px 10px;text-align:cente">رجـــــــوع</a>
+<br/>
+  
+		
+		<div id="output"></div>
+		  
+	
+	</div>
+	
+	</form>
+	</div>
+	</center>
+	
+
+    <div id="fb-root"></div>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="jquery.auto-complete.js"></script>
+    <script src="input.js"></script>
+    <script>
+        $(function(){
+            $('.hero-demo').autoComplete({
+                minChars: 1,
+                source: function(term, suggest){
+                    term = term.toLowerCase();
+                    var choices = ['غرير العسل',
+                    'شبث عربي', 'المها العربي', 'الضبع', 'غزال الريم','النمر العربي', 'الذئب العربي', 'القنفذ', 'المها العربي','الضب',];
+                    var suggestions = [];
+                    for (i=0;i<choices.length;i++)
+                        if (~choices[i].toLowerCase().indexOf(term)) suggestions.push(choices[i]);
+                    suggest(suggestions);
+                }
+            });
+            $('#advanced-demo').autoComplete({
+                minChars: 0,
+                source: function(term, suggest){
+                    term = term.toLowerCase();
+                  
+                    var suggestions = [];
+                    for (i=0;i<choices.length;i++)
+                        if (~(choices[i][0]+' '+choices[i][1]).toLowerCase().indexOf(term)) suggestions.push(choices[i]);
+                    suggest(suggestions);
+                },
+                renderItem: function (item, search){
+                    search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+                    var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
+                    return '<div class="autocomplete-suggestion" data-langname="'+item[0]+'" data-lang="'+item[1]+'" data-val="'+search+'"><img src="img/'+item[1]+'.png"> '+item[0].replace(re, "<b>$1</b>")+'</div>';
+                },
+                onSelect: function(e, term, item){
+                    console.log('Item "'+item.data('langname')+' ('+item.data('lang')+')" selected by '+(e.type == 'keydown' ? 'pressing enter or tab' : 'mouse click')+'.');
+                    $('#advanced-demo').val(item.data('langname')+' ('+item.data('lang')+')');
+                }
+            });
+        });
+
+        
+
+
+
+
+
+
+
+
+
+
+		const popup = document.querySelector('.full-screen');
+
+function showPopup(){
+  popup.classList.remove('hidden');
+}
+
+function closePopup(){
+  popup.classList.add('hidden');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let input = $('#name-input');
+
+let _m = {
+
+"مها": 'المها العربي',
+"نمر": 'النمر العربي',
+"قنفذ": 'القنفذ',
+"ريم": 'غزال الريم',
+"شيث": 'الشيث العربي',
+"اللادغ": 'الشيث العربي',
+"ضب": 'الضب',
+"غرير": 'الغرير',
+"الجعير": 'الضبع',
+"ضبع": 'الضبع',
+"": '',
+};
+
+input.on('input', (evt) => {
+  let value = evt.target.value;
+  if (_m[value]) {
+    input.val(_m[value]);
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/fuse.js/2.5.0/fuse.min.js'></script>
+
+
+
+  <script  src="g.js"></script>
+
+
+
+</body>
+</html>

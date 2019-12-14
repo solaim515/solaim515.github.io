@@ -1,0 +1,109 @@
+#main {
+  border: solid black 2px;
+  padding: 15px;
+  width: 625px;
+  text-align: center;
+  height: 500px;
+  background-color: red;
+}
+
+#window {
+  margin-top: 10px;
+  border: solid black 2px;
+  width: 300px;
+  height: 420px;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  background-color: white;
+}
+
+#description {
+  margin-top: 10px;
+  border: solid black 2px;
+  width: 300px;
+  height: 300px;
+  display: inline-block;
+  text-align: left;
+  vertical-align: top;
+  background-color: white;
+}
+
+img {
+  width: auto;
+  height: 250px;
+}
+
+h1 {
+  font-family: "Saira Semi Condensed", sans-serif;
+  font-size: 40px;
+  margin-top: 0;
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  margin: 5px;
+}
+
+#buttons {
+  padding-left: 78%;
+  display: inline-block;
+  vertical-align: bottom;
+    margin-top: -155px;
+
+}
+
+.direction {
+  width: 100px;
+  height: 100px;
+}
+
+i {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 6px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+#one {
+  display: inline-block;
+  border: black solid 3px;
+  text-align: center;
+  vertical-align: bottom;
+
+}
+
+#two {
+  display: inline-block;
+  border: black solid 3px;
+  text-align: center;
+    vertical-align: bottom;
+
+}
+
+#gifer {
+  margin-left: -30px;
+  margin-top: -120px;
+  vertical-align: bottom, right;
+}
+
+#gifer img {
+  height: auto;
+  width: 140px;
+}
+
+#window img{
+  height:auto;
+  width:auto;
+  max-width: 300px;
+}
